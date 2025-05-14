@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import Product from "./components/Product";
 import Category from "./components/category";
 import Not_Category from "./components/Not_Category";
 import Message from "./components/Message";
 
 function App() {
-  return <Message />;
+  const handleInitalState=()=>{
+    return 1+1+1;
+  }
+  const[count,setCount]=useState(()=>{
+    const number=1+1+1;
+    console.log(number);
+    return number;
+  });
+  const handleCount=()=>{
+    //  nếu dùng setCount(count+1) thì nó vẫn chỉ tăng 1;
+    //nếu dùng callback còn cái ni tăng 3
+    setCount((prev)=>prev+1);
+    setCount((prev)=>prev+1);
+    setCount((prev)=>prev+1);
+  };
+  
+  return <div>
+    <button onClick={handleCount}>Click me{count}</button>
+    Count:{count}
+    </div>;
 }
 
 export default App;

@@ -13,3 +13,6 @@ chạy sau khi hiển thị ra màn hình
 useLayoutEffect chạy trc khi hiển thị ra màn hình 
 +đo kích thước, scroll,chỉnh css 
 chỉ dùng layout nếu thao tác kích thước
+useRef là một hook cho phép bạn tạo ra đối tượng tham chiếu mà bạn có thể gán các phần tử dom hoặc lưu
+giá trị mà ko cần lm mới component
+nó lưu giá trị tạm ko cần render lưu biến 

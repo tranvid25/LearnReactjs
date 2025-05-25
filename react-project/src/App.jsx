@@ -7,21 +7,14 @@ import Content from "./components/Content";
 import Timer from "./components/Timer";
 
 function App() {
-const [count,setCount]=useState(0);
-const timerId=useRef();
-const handleStart=()=>{
- timerId.current= setInterval(()=>{
-    setCount((prev)=>prev+1);
-  },1000);
-}
-const handleStop=()=>{
-  clearInterval(timerId.current);
-};
+const divRef=useRef();
+useEffect(()=>{
+ console.log(divRef.current);
+},[]);
 return (
    <div>
-   <h2>{count}</h2>
-    <button onClick={handleStart}>Start</button>
-    <button onClick={handleStop}>Stop</button>
+    <div ref={divRef}> useRef</div>
+    <Content/>
    </div>
   );
 }

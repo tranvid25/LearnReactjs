@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Product from "./components/Product";
 import Category from "./components/category";
 import Not_Category from "./components/Not_Category";
@@ -7,14 +7,14 @@ import Content from "./components/Content";
 import Timer from "./components/Timer";
 
 function App() {
-const divRef=useRef();
-useEffect(()=>{
- console.log(divRef.current);
+const [count,setCount]=useState(0);
+const handleIncrease=useCallback(()=>{
+  setCount((prev)=>prev+1);
 },[]);
 return (
    <div>
-    <div ref={divRef}> useRef</div>
-    <Content/>
+     <div>{count}</div>
+     <Content handleIncrease={handleIncrease}/>
    </div>
   );
 }

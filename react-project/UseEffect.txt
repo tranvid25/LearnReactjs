@@ -20,3 +20,7 @@ nó lưu giá trị tạm ko cần render lưu biến
 +React.memo để tối ưu hóa hiệu suất của các thành phần chức năng
 bằng cách ngăn chặn việc render lại không cần thiết
 nó sẽ chỉ render lại component con nếu có sự thay đổi trong props.
+
++USECALLBACK giúp bạn tối ưu hóa hiệu suât bằng cách ghi nhớ các hàm và chỉ tái tạo chúng kh các phụ thuộc thay đổi 
+điều này đặc biệt hữu ích khi bạn truyền các hàm như props vào các component con
+ngăn chặn component con render ko cần thiết,hki có các hàm phức tạp cần tái tạo

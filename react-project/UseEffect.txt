@@ -1,0 +1,11 @@
+Cú pháp 
+useEffect(callback,[deps])
+sử dụng 
++callAPI
+Cập nhật DOM
+lắng nge DOM(event,scroll,resize)
+clean up
+Các cách để sử dụng
+useEfect(callback)
+useEffect(callback,[])
+useEffect(callback,[deps])

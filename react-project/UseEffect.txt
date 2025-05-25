@@ -9,3 +9,7 @@ Các cách để sử dụng
 useEfect(callback)
 useEffect(callback,[])
 useEffect(callback,[deps])
+chạy sau khi hiển thị ra màn hình 
+useLayoutEffect chạy trc khi hiển thị ra màn hình 
++đo kích thước, scroll,chỉnh css 
+chỉ dùng layout nếu thao tác kích thước

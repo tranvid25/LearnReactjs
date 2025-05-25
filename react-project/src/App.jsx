@@ -35,6 +35,7 @@ return (
    <button onClick={()=>setCount(count+1)}>Click me</button>
    <button onClick={()=>setShow(!show)}>Show</button>
    {show&&<Timer/>}
+   <Content/>
    </div>
   );
 }

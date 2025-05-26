@@ -26,3 +26,8 @@ nó sẽ chỉ render lại component con nếu có sự thay đổi trong props
 ngăn chặn component con render ko cần thiết,hki có các hàm phức tạp cần tái tạo
 
 +USEMEMO đc sử dụng để tối ưu hóa hiệu suất bằng cách ghi nhớ kết quả phép tính 
+
++USEREDUCER là một hook đc sử dụng để quản lý state phức tạp hơn so với useState.
+nó đặc biệt hữu ích khi state phụ thuộc vào nhiều hành động khác nhau hoặc khi state có cấu trúc
+phức tạp
+nó giống với Redux ở chỗ nó cho phép bạn định nghĩa 1 reducer để cập nhật dựa trên các hàng động

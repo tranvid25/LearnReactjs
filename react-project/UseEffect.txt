@@ -24,3 +24,5 @@ nó sẽ chỉ render lại component con nếu có sự thay đổi trong props
 +USECALLBACK giúp bạn tối ưu hóa hiệu suât bằng cách ghi nhớ các hàm và chỉ tái tạo chúng kh các phụ thuộc thay đổi 
 điều này đặc biệt hữu ích khi bạn truyền các hàm như props vào các component con
 ngăn chặn component con render ko cần thiết,hki có các hàm phức tạp cần tái tạo
+
++USEMEMO đc sử dụng để tối ưu hóa hiệu suất bằng cách ghi nhớ kết quả phép tính 

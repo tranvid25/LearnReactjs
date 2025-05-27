@@ -58,3 +58,19 @@ Object.assign(boxElement.style,{
 
 
 console.log(boxElement.style.backgroundColor);
+/**
+ ClassList Properties
+ +add
+ +contains
+ +remove
+ +toggle
+ */
+boxElement.classList.add('red','blue')//cách thêm nhiều class
+//lấy ra được từng class số lượng giá trị dạng chuỗi
+// ;
+//Kiểm tra có tồn tại ko 
+console.log(boxElement.classList.contains('red'));
+setTimeout(()=>{
+    boxElement.classList.toggle('red');
+},3000);
+//toggle

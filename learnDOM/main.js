@@ -136,3 +136,23 @@ document.querySelector('button').onclick=function(e){
     e.stopPropagation();
     console.log('click me!');
 }
+/**
+ * Event Listener
+ * Json
+ * Fetch
+ * DOM location
+ * Local storage
+ * coding convention
+ * Best Practices
+ * Mistakes
+ * Performance
+ * 1.Xử lý nhiều việc khi 1 event xảy ra
+ * 2.Lắng nge/hủy bỏ lắng nge
+ */
+var btn=document.getElementById('btn');
+btn.addEventListener('click',function(e){
+    console.log(Math.random());
+})
+setTimeout(function(){
+   btn.removeEventListener('click');
+},3000);

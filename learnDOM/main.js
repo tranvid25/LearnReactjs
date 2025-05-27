@@ -30,9 +30,9 @@ console.log(document.forms[0]);
 // dùng setAtrribute để đặt các attribute khác nhau
 // headingElement.setAttribute('data','heading')
 //innerText,textContext
-var headingElement1=document.querySelector('h1');
-headingElement1.innerText='Nêw' //thay đổi nội dung
-console.log(headingElement1.innerText) 
+// var headingElement1=document.querySelector('h1');
+// headingElement1.innerText='Nêw' //thay đổi nội dung
+// console.log(headingElement1.innerText) 
 
 /**
  * innerText hoặc textContent
@@ -74,3 +74,20 @@ setTimeout(()=>{
     boxElement.classList.toggle('red');
 },3000);
 //toggle
+
+//DOM EVENTS
+//1.Atrribute events
+//2.assign event using the element node
+/**
+ * ví dụ tui có 1 chữ khi tui nhấn vào sẽ hiển thị 1 số random
+ * c1 dùng onclick
+ * c2 dùng onmouseove để hover vào là tự hiển thị 1 số random
+ * danh sách sự kiện bên w3school ht
+ */
+var h1element=document.querySelectorAll('h1');
+for(var i=0;i<h1element.length;i++){
+    h1element[i].onclick=function(e){
+        console.log(e.target);
+    }
+}
+// trong thực tế sẽ dùng cách này

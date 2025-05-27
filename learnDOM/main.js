@@ -91,3 +91,48 @@ for(var i=0;i<h1element.length;i++){
     }
 }
 // trong thực tế sẽ dùng cách này
+//1.Input/select
+//2.Key up/down
+//3.preventDefault ngăn chặn mọi hành vi mặc định có thể xảy ra
+//4.stopProgram hành vi lăn chuột
+var inputValue;
+var inputElement=document.querySelector('input[type="checkbox"]');
+inputElement.onchange=function(e){
+    console.log(e.target.checked);
+//   inputValue=e.target.value;
+}
+//type=text là oninput
+//onkeyup là để xử lý những bài toán
+document.onkeydown=function(e){
+    switch(e.which){
+        case 27:
+        console.log('exit');
+        break;
+        case 13:
+        console.log('send chat');
+    }
+}//để nhận đc nút bấm trên bàn phím
+//keypress là nếu giữ nó sẽ tăng số lượng render lên
+var aelement=document.links;
+for(var i=0;i<aelement.length;i++){
+    aelement[i].onclick=function(e){
+       if(!e.target.herf.startsWith('https://www.youtube.com/watch?v=4ZnQur6rewg&list=PL_-VfJajZj0VgpFpEVFzS5Z-lkXtBe-x5&index=78')){
+          e.preventDefault();//ngăn chặn 
+       }
+      
+    }
+}
+var ulelement=document.querySelector('ul');
+ulelement.onmousedown=function(e){
+    e.preventDefault();
+}
+ulelement.onclick=function(e){
+    console.log(e.target);
+}
+document.querySelector('div').onclick=function(e){
+    console.log('DIV');
+}
+document.querySelector('button').onclick=function(e){
+    e.stopPropagation();
+    console.log('click me!');
+}

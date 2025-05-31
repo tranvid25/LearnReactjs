@@ -69,3 +69,12 @@ promise
  * promise.reject
  * promise.all
  */
+
+
+//ARROWFUNCTION
+const logger =(log)=>{
+    console.log(log);
+}
+logger('Message...');
+const sum =(a,b)=>a+b;
+console.log(sum(2,2));

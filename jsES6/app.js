@@ -152,21 +152,137 @@ getComment()
     });
 
 })
-var postApi='https://jsonplaceholder.typicode.com/todos';
-fetch(postApi)
-    .then(function(response){
+var courseApi='http://localhost:3000/courses'
+fetch(courseApi)
+     .then(function(response){
         return response.json();
-    })
-    .then(function(posts){
-        var htmls=posts.map(function(post){
-            return `<li>
-            <h2>${post.title}</h2>
-            <p>${post.body}</p>
-            </li>`;
+     })
+     .then(function(courses){
+        console.log(courses);
+     })
+//Server(fake) /Mock API 
+var listCoursesBlock = document.querySelector('#list-courses');
+// Bạn phải khai báo API đúng nha
+var listCoursesBlock = document.querySelector('#list-courses');
+var nameInput = document.querySelector('input[name="name"]');
+var descInput = document.querySelector('input[name="description"]');
+var createBtn = document.querySelector('#create');
+function start() {
+    getCourses(renderCourses);
+    handleCreateForm();
+}
+
+start();
+
+// Lấy dữ liệu courses từ API
+function getCourses(callback) {
+    fetch(courseApi)
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(callback)
+        .catch(function(error) {
+            console.error('Fetch error:', error);
+            listCoursesBlock.innerHTML = '<li>Error loading courses</li>';
         });
-        var html=htmls.join('');
-        document.getElementById('post-block').innerHTML=html
-    })
-    .catch(function(err){
-        console.log(err)
+}
+function createCourse(data,callback){
+    var options={
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(data)
+    };
+    fetch(courseApi,options)
+       .then(function(response){
+        return response.json();
+       })
+       .then(callback);
+}
+function deleteCourse(id){
+    var options={
+        method:'DELETE',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+    };
+    fetch(courseApi + '/' +id,options)
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(){
+             var item =document.querySelector('.course-item-' + id);
+             if(item){
+                item.remove();
+             }
+        });
+}
+function updateCourse(id,data,callback){
+    var options={
+        method:'PUT',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(data)
+    };
+    fetch(courseApi + '/' +id,options)
+       .then(function(response){
+        return response.json();
+       })
+       .then(callback);
+}
+
+
+// Hiển thị courses ra #list-courses
+function renderCourses(courses) {
+    var htmls = courses.map(function(course) {
+        return `
+        <li class="course-item-${course.id}">
+           <h4>${course.name}</h4>
+           <p>${course.description}</p>
+           <button onClick="deleteCourse(${course.id})">Xóa</button>
+           <button onClick="handleEdit(${course.id})">Sửa</button>
+        </li>`;
     });
+    listCoursesBlock.innerHTML = htmls.join('');
+}
+function handleCreateForm(){
+    var createBtn=document.querySelector('#create');
+    createBtn.onclick=function(){
+        var name=document.querySelector('input[name="name"]').value;
+        var description=document.querySelector('input[name="description"]').value;
+        var formData={
+            name:name,
+            description:description
+        };
+        var editingId=createBtn.getAttribute('data-edit-id');
+        if(editingId){
+            updateCourse(editingId,formData,function(){
+                createBtn.textContent='Lưu';
+                createBtn.removeAttribute('data-edit-id');
+                resetForm();
+                getCourses(renderCourses);
+            })
+        }
+        createCourse(formData,function(){
+            resetForm();
+            getCourses(renderCourses);
+        });
+    }
+}
+function handleEdit(id){
+    fetch(courseApi + '/' +id)
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(course){
+            nameInput.value = course.name;
+            descInput.value = course.description;
+            createBtn.textContent = 'Cập nhật';
+            createBtn.setAttribute('data-edit-id', id);
+        })
+}

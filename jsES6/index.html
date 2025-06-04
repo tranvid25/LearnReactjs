@@ -6,10 +6,33 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>test</h1>
-    <ul id="post-block">
+    <h1>Danh sách khóa học</h1>
+     <ul id="list-courses">
 
-    </ul>
+     </ul>
+     <div>
+        <div>
+            <label for="">Nmae</label>
+            <input type="text" name="name">
+        </div>
+        <div>
+            <label for="">Description</label>
+            <input type="text" name="description">
+        </div>
+        <div>
+            <button id="create">Create</button>
+        </div>
+     </div>
+     <h2 id="heading">Hello guy</h2>
+     <script>
+        const h1=document.querySelector('#heading')
+        console.log(h1);
+        //taoj them element
+        const h2=document.createElement('h2')
+        h2.innerText='Hello guys'
+        document.body.appendChild(h2)
+        
+     </script>
 </body>
 <script src="app.js"></script>
 </html>
